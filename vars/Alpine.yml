@@ -1,0 +1,4 @@
+---
+sshd_privilege_escalation: False
+sshd_pkgs:
+  - openssh

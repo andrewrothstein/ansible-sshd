@@ -6,5 +6,6 @@
     - "{{ ansible_os_family }}.yml"
     
 - name: install packages
+  become: '{{sshd_privilege_escalation|default(True)}}'
   package: name={{item}} state=present
-  with_items: "{{sshd_packages}}"
+  with_items: '{{sshd_packages|default([])}}'
