@@ -7,5 +7,7 @@
     
 - name: install packages
   become: '{{sshd_privilege_escalation|default(True)}}'
-  package: name={{item}} state=present
   with_items: '{{sshd_packages|default([])}}'
+  package:
+    name: '{{item}}'
+    state: present
