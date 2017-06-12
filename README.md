@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/andrewrothstein/ansible-sshd.svg?style=svg)](https://circleci.com/gh/andrewrothstein/ansible-sshd)
 andrewrothstein.sshd
 =========
+[![Build Status](https://travis-ci.org/andrewrothstein/ansible-sshd.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-sshd)
 
 Installs the SSH server
 
