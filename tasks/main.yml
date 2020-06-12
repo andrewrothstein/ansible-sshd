@@ -22,7 +22,7 @@
   become: yes
   become_user: root
   with_items:
-    - f: sshd_config.sh
+    - f: sshd_config
       d: /etc/ssh
       m: 0644
   template:

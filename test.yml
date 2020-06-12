@@ -61,10 +61,10 @@
       VersionAddendum: none
       AcceptEnv: LANG LC_*
       Banner: none
-      Subsystem: sftp	/usr/libexec/sftp-server
+      Subsystem: 'sftp	/usr/libexec/sftp-server'
       Subsystems:
-        - sftp /usr/libexec/sftp-server
-        - scp /ffo/bar/scp
+        - 'sftp /usr/libexec/sftp-server'
+        - 'scp /ffo/bar/scp'
       MatchUsers:
         anoncvs:
           X11Forwarding: no

@@ -106,17 +106,17 @@ sshd_config:
   #VersionAddendum: none
 
   ## pass locale information
-  #AcceptEnv: LANG LC_*
+  #AcceptEnv: 'LANG LC_*'
 
   ## no default banner path
   #Banner: none
 
   ## override default of no subsystems
-  #Subsystem:	sftp	/usr/libexec/sftp-server
+  #Subsystem:	'sftp	/usr/libexec/sftp-server'
   ## and/or
   #Subsystems:
-  #  - sftp /usr/libexec/sftp-server
-  #  - scp /ffo/bar/scp
+  #  - 'sftp /usr/libexec/sftp-server'
+  #  - 'scp /ffo/bar/scp'
 
   ## Example of overriding settings on a per-user basis
   ## Dictionary with usernames as keys an a Dictionary of per settings
