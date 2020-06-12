@@ -12,7 +12,20 @@
 
 - name: install packages
   become: '{{ sshd_privilege_escalation | default(True) }}'
-  with_items: '{{ sshd_packages | default([]) }}'
+  become_user: root
+  with_items: '{{ sshd_packages }}'
   package:
     name: '{{ item }}'
     state: present
+
+- when: sshd_config is defined and sshd_privilege_escalation | bool
+  become: yes
+  become_user: root
+  with_items:
+    - f: sshd_config.sh
+      d: /etc/ssh
+      m: 0644
+  template:
+    src: '{{ item.f }}.j2'
+    dest: '{{ item.d }}/{{ item.f }}'
+    mode: '{{ item.m }}'

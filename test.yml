@@ -1,4 +1,87 @@
 ---
 - hosts: all
+  vars:
+    # the works
+    sshd_config:
+      Port: 22
+      AddressFamily: any
+      ListenAddress: '0.0.0.0'
+      ListenAddresses:
+        - '0.0.0.0'
+        - '::'
+      HostKey: /etc/ssh/ssh_host_rsa_key
+      HostKeys:
+        - /etc/ssh/ssh_host_ecdsa_key
+        - /etc/ssh/ssh_host_ed25519_key
+      RekeyLimit: default none
+      SyslogFacility: AUTH
+      LogLevel: INFO
+      LoginGraceTime: 2m
+      PermitRootLogin: prohibit-password
+      StrictModes: yes
+      MaxAuthTries: 6
+      MaxSessions: 10
+      PubkeyAuthentication: yes
+      AuthorizedKeysFile: .ssh/authorized_keys
+      AuthorizedPrincipalsFile: none
+      AuthorizedKeysCommand: none
+      AuthorizedKeysCommandUser: nobody
+      HostbasedAuthentication: no
+      IgnoreUserKnownHosts: no
+      IgnoreRhosts: yes
+      PasswordAuthentication: yes
+      PermitEmptyPasswords: no
+      ChallengeResponseAuthentication: yes
+      KerberosAuthentication: no
+      KerberosOrLocalPasswd: yes
+      KerberosTicketCleanup: yes
+      KerberosGetAFSToken: no
+      GSSAPIAuthentication: no
+      GSSAPICleanupCredentials: yes
+      UsePAM: yes
+      AllowAgentForwarding: yes
+      AllowTcpForwarding: yes
+      GatewayPorts: no
+      X11Forwarding: no
+      X11DisplayOffset: 10
+      X11UseLocalhost: yes
+      PermitTTY: yes
+      PrintMotd: yes
+      PrintLastLog: yes
+      TCPKeepAlive: yes
+      PermitUserEnvironment: no
+      Compression: delayed
+      ClientAliveInterval: 0
+      ClientAliveCountMax: 3
+      UseDNS: no
+      PidFile: /var/run/sshd.pid
+      MaxStartups: 10:30:100
+      PermitTunnel: no
+      ChrootDirectory: none
+      VersionAddendum: none
+      AcceptEnv: LANG LC_*
+      Banner: none
+      Subsystem: sftp	/usr/libexec/sftp-server
+      Subsystems:
+        - sftp /usr/libexec/sftp-server
+        - scp /ffo/bar/scp
+      MatchUsers:
+        anoncvs:
+          X11Forwarding: no
+          AllowTcpForwarding: no
+          PermitTTY: no
+          ForceCommand: cvs server
   roles:
-    - role: '{{playbook_dir}}'
+    - role: '{{ playbook_dir }}'
+- hosts: all
+  # simple configuration
+  vars:
+    ssh_config:
+      Port: 22
+      ListenAddresses:
+        - '0.0.0.0'
+        - '::'
+      PubkeyAuthentication: yes
+      PermitRootLogin: no
+  roles:
+    - role: '{{ playbook_dir }}'

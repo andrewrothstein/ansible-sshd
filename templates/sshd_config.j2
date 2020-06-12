@@ -1,0 +1,116 @@
+#	$OpenBSD: sshd_config,v 1.103 2018/04/09 20:41:22 tj Exp $
+
+# This is the sshd server system-wide configuration file.  See
+# sshd_config(5) for more information.
+
+# This sshd was compiled with PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+# The strategy used for options in the default sshd_config shipped with
+# OpenSSH is to specify options with their default value where
+# possible, but leave them commented.  Uncommented options override the
+# default value.
+
+{% if 'Port' in sshd_config %}Port {{ sshd_config.Port }}{% endif %}
+{% if 'AddressFamily' in sshd_config %}AddressFamily {{ sshd_config.AddressFamily }}{% endif %}
+{% if 'ListenAddress' in sshd_config %}ListenAddress {{ sshd_config.ListenAddress }}{% endif %}
+{% if 'ListenAddresses' in sshd_config %}
+  {% for la in sshd_config.ListenAddresses %}
+ListenAddress {{ la }}
+  {% endfor %}
+{% endif %}
+
+{% if 'HostKey' in sshd_config %}HostKey {{ sshd_config.HostKey }}{% endif %}
+{% if 'HostKeys' in sshd_config %}
+  {% for hk in sshd_config.HostKeys %}
+HostKey {{ hk }}
+  {% endfor %}
+{% endif %}
+
+{% if 'RekeyLimit' in sshd_config %}RekeyLimit {{ sshd_config.RekeyLimit }}{% endif %}
+
+{% if 'SyslogFacility' in sshd_config %}SyslogFacility {{ sshd_config.SyslogFacility }}{% endif %}
+{% if 'LogLevel' in sshd_config %}LogLevel {{ sshd_config.LogLevel }}{% endif %}
+
+# Authentication:
+
+{% if 'LoginGraceTime' in sshd_config %}LoginGraceTime {{ sshd_config.LoginGraceTime }}{% endif %}
+{% if 'PermitRootLogin' in sshd_config %}PermitRootLogin {{ sshd_config.PermitRootLogin }}{% endif %}
+{% if 'StrictModes' in sshd_config %}StrictModes {{ sshd_config.StrictModes }}{% endif %}
+{% if 'MaxAuthTries' in sshd_config %}MaxAuthTries {{ sshd_config.MaxAuthTries }}{% endif %}
+{% if 'MaxSessions' in sshd_config %}MaxSessions {{ sshd_config.MaxSessions }}{% endif %}
+
+{$ if 'PubkeyAuthentication' in sshd_config %}PubkeyAuthentication {{ sshd_config.PubkeyAuthentication }}{% endif %}
+
+{% if 'AuthorizedKeysFile' in sshd_config %}AuthorizedKeysFile {{ sshd_config.AuthorizedKeysFile }}{% endif %}
+{% if 'AuthorizedPrincipalsFile' in sshd_config %}AuthorizedPrincipalsFile {{ sshd_config.AuthorizedPrincipalsFile }}{% endif %}
+
+{% if 'AuthorizedKeysCommand' in sshd_config %}AuthorizedKeysCommand {{ sshd_config.AuthorizedKeysCommand }}{% endif %}
+{% if 'AuthorizedKeysCommandUser' in sshd_config %}AuthorizedKeysCommandUser {{ sshd_config.AuthorizedKeysCommandUser }}{% endif %}
+
+# For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
+{% if 'HostbasedAuthentication' in sshd_config %}HostbasedAuthentication {{ sshd_config.HostbasedAuthentication }}{% endif %}
+# Change to yes if you don't trust ~/.ssh/known_hosts for
+# HostbasedAuthentication
+{% if 'IgnoreUserKnownHosts' in sshd_config %}IgnoreUserKnownHosts {{ sshd_config.IgnoreUserKnownHosts }}{% endif %}
+# Don't read the user's ~/.rhosts and ~/.shosts files
+{% if 'IgnoreRhosts' in sshd_config %}IgnoreRhosts {{ sshd_config.IgnoreRhosts }}{% endif %}
+
+# To disable tunneled clear text passwords, change to no here!
+{% if 'PasswordAuthentication' in sshd_config %}PasswordAuthentication {{ sshd_config.PasswordAuthentication }}{% endif %}
+{% if 'PermitEmptyPasswords' in sshd_config %}PermitEmptyPasswords {{ sshd_config.PermitEmptyPasswords }}{% endif %}
+
+# Change to no to disable s/key passwords
+{% if 'ChallengeResponseAuthentication' in sshd_config %}ChallengeResponseAuthentication {{ sshd_config.ChallengeResponseAuthentication }}{% endif %}
+
+# Kerberos options
+{% if 'KerberosAuthentication' in sshd_config %}KerberosAuthentication {{ sshd_config.KerberosAuthentication }}{% endif %}
+{% if 'KerberosOrLocalPasswd' in sshd_config %}KerberosOrLocalPasswd {{ sshd_config.KerberosOrLocalPasswd }}{% endif %}
+{% if 'KerberosTicketCleanup' in sshd_config %}KerberosTicketCleanup {{ sshd_config.KerberosTicketCleanup }}{% endif %}
+{% if 'KerberosGetAFSToken' in sshd_config %}KerberosGetAFSToken {{ sshd_config.KerberosGetAFSToken }}{% endif %}
+
+{% if 'GSSAPIAuthentication' in sshd_config %}GSSAPIAuthentication {{ sshd_config.GSSAPIAuthentication }}{% endif %}
+{% if 'GSSAPICleanupCredentials' in sshd_config %}GSSAPICleanupCredentials {{ sshd_config.GSSAPICleanupCredentials }}{% endif %}
+
+{% if 'UsePAM' in sshd_config %}UsePAM {{ sshd_config.UsePAM }}{% endif %}
+
+{% if 'AllowAgentForwarding' in sshd_config %}AllowAgentForwarding {{ sshd_config.AllowAgentForwarding }}{% endif %}
+{% if 'AllowTcpForwarding' in sshd_config %}AllowTcpForwarding {{ sshd_config.AllowTcpForwarding }}{% endif %}
+{% if 'GatewayPorts' in sshd_config %}GatewayPorts {{ sshd_config.GatewayPorts }}{% endif %}
+{% if 'X11Forwarding' in sshd_config %}X11Forwarding {{ sshd_config.X11Forwarding }}{% endif %}
+{% if 'X11DisplayOffset' in sshd_config %}X11DisplayOffset {{ sshd_config.X11DisplayOffset }}{% endif %}
+{% if 'X11UseLocalhost' in sshd_config %}X11UseLocalhost {{ sshd_config.X11UseLocalhost }}{% endif %}
+{% if 'PermitTTY' in sshd_config %}PermitTTY {{ sshd_config.PermitTTY }}{% endif %}
+{% if 'PrintMotd' in sshd_config %}PrintMotd {{ sshd_config.PrintMotd }}{% endif %}
+{% if 'PrintLastLog' in sshd_config %}PrintLastLog {{ sshd_config.PrintLastLog }}{% endif %}
+{% if 'TCPKeepAlive' in sshd_config %}TCPKeepAlive {{ sshd_config.TCPKeepAlive }}{% endif %}
+{% if 'PermitUserEnvironment' in sshd_config %}PermitUserEnvironment {{ sshd_config.PermitUserEnvironment }}{% endif %}
+{% if 'Compression' in sshd_config %}Compression {{ sshd_config.Compression }}{% endif %}
+{% if 'ClientAliveInterval' in sshd_config %}ClientAliveInterval {{ sshd_config.ClientAliveInterval }}{% endif %}
+{% if 'ClientAliveCountMax' in sshd_config %}ClientAliveCountMax {{ sshd_config.ClientAliveCountMax }}{% endif %}
+{% if 'UseDNS' in sshd_config %}UseDNS {{ sshd_config.UseDNS }}{% endif %}
+{% if 'PidFile' in sshd_config %}PidFile {{ sshd_config.PidFile }}{% endif %}
+{% if 'MaxStartups' in sshd_config %}MaxStartups {{ sshd_config.MaxStartups }}{% endif %}
+{% if 'PermitTunnel' in sshd_config %}PermitTunnel {{ sshd_config.PermitTunnel }}{% endif %}
+{% if 'ChrootDirectory' in sshd_config %}ChrootDirectory {{ sshd_config.ChrootDirectory }}{% endif %}
+{% if 'VersionAddendum' in sshd_config %}VersionAddendum {{ sshd_config.VersionAddendum }}{% endif %}
+
+{% if 'AcceptEnv' in sshd_config %}AcceptEnv {{ sshd_config.AcceptEnv }}{% endif %}
+
+{% if 'Banner' in sshd_config %}Banner {{ sshd_config.Banner }}{% endif %}
+
+{% if 'Subsystem' in sshd_config %}Subsystem {{ sshd_config.Subsystem }}{% endif %}
+{% if 'Subsystems' in sshd_config %}
+{% for ss in sshd_config.Sybsystems %}
+Subsystem {{ ss }}
+{% endfor %}
+{% endif %}
+
+{% if 'MatchUsers' in sshd_config %}
+{% for mu in sshd_config.MatchUsers.items %}
+Match User {{ mu.key }}
+{% if 'X11Forwarding' in mu.value %} X11Forwarding {{ mu.value.X11Forwarding }}{% endif %}
+{% if 'AllowTcpForwarding' in mu.value %} AllowTcpForwarding {{ mu.value.AllowTcpForwarding }}{% endif %}
+{% if 'PermitTTY' in mu.value %} PermitTTY {{ mu.value.PermitTTY }}{% endif %}
+{% if 'ForceCommand' in mu.value %} ForceCommand {{ mu.value.ForceCommand }}{% endif %}
+{% endfor %}
+{% endif %}
