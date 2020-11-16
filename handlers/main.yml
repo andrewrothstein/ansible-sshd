@@ -4,5 +4,5 @@
   become: yes
   become_user: root
   service:
-    name: '{{ sshd_service }}'
+    name: '{{ sshd_service_id }}'
     state: restarted

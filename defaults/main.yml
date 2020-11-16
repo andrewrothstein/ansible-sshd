@@ -1,5 +1,10 @@
 ---
-sshd_service: sshd
+sshd_service_id: sshd
+
+sshd_service_managed: True
+sshd_service_state: started
+sshd_service_enabled: True
+
 sshd_privilege_escalation: True
 
 sshd_templates:
