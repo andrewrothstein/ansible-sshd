@@ -1,5 +1,16 @@
 ---
+sshd_service_id: sshd
+
+sshd_service_managed: True
+sshd_service_state: started
+sshd_service_enabled: True
+
 sshd_privilege_escalation: True
+
+sshd_templates:
+  - f: sshd_config
+    d: /etc/ssh
+    m: 0644
 
 # writing the sshd config requires privilege escalation despite your sshd_privilege_escalation setting
 sshd_config:

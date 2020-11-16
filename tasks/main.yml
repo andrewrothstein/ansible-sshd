@@ -18,14 +18,20 @@
     name: '{{ item }}'
     state: present
 
-- when: sshd_config is defined and sshd_privilege_escalation | bool
+- name: configure sshd
+  when: sshd_config is defined and sshd_privilege_escalation | bool
   become: yes
   become_user: root
-  with_items:
-    - f: sshd_config
-      d: /etc/ssh
-      m: 0644
+  with_items: '{{ sshd_templates }}'
+  notify: sshd_restart
   template:
     src: '{{ item.f }}.j2'
     dest: '{{ item.d }}/{{ item.f }}'
     mode: '{{ item.m }}'
+
+- name: start sshd
+  when: sshd_service_managed
+  service:
+    name: '{{ sshd_service_id }}'
+    state: '{{ sshd_service_state }}'
+    enabled: '{{ sshd_service_enabled }}'

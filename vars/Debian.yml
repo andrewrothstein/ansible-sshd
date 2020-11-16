@@ -1,3 +1,4 @@
 ---
+sshd_service_id: ssh
 sshd_packages :
   - ssh
