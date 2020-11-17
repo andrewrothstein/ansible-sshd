@@ -39,7 +39,7 @@ HostKey {{ hk }}
 {% if 'MaxAuthTries' in sshd_config %}MaxAuthTries {{ sshd_config.MaxAuthTries }}{% endif %}
 {% if 'MaxSessions' in sshd_config %}MaxSessions {{ sshd_config.MaxSessions }}{% endif %}
 
-{$ if 'PubkeyAuthentication' in sshd_config %}PubkeyAuthentication {{ sshd_config.PubkeyAuthentication }}{% endif %}
+{% if 'PubkeyAuthentication' in sshd_config %}PubkeyAuthentication {{ sshd_config.PubkeyAuthentication }}{% endif %}
 
 {% if 'AuthorizedKeysFile' in sshd_config %}AuthorizedKeysFile {{ sshd_config.AuthorizedKeysFile }}{% endif %}
 {% if 'AuthorizedPrincipalsFile' in sshd_config %}AuthorizedPrincipalsFile {{ sshd_config.AuthorizedPrincipalsFile }}{% endif %}
@@ -49,10 +49,10 @@ HostKey {{ hk }}
 
 # For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
 {% if 'HostbasedAuthentication' in sshd_config %}HostbasedAuthentication {{ sshd_config.HostbasedAuthentication }}{% endif %}
-# Change to yes if you don't trust ~/.ssh/known_hosts for
+# Change to yes if you dont trust ~/.ssh/known_hosts for
 # HostbasedAuthentication
 {% if 'IgnoreUserKnownHosts' in sshd_config %}IgnoreUserKnownHosts {{ sshd_config.IgnoreUserKnownHosts }}{% endif %}
-# Don't read the user's ~/.rhosts and ~/.shosts files
+# Don't read the users ~/.rhosts and ~/.shosts files
 {% if 'IgnoreRhosts' in sshd_config %}IgnoreRhosts {{ sshd_config.IgnoreRhosts }}{% endif %}
 
 # To disable tunneled clear text passwords, change to no here!
