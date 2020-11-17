@@ -106,11 +106,11 @@ Subsystem {{ ss }}
 {% endif %}
 
 {% if 'MatchUsers' in sshd_config %}
-{% for mu in sshd_config.MatchUsers.items %}
-Match User {{ mu.key }}
-{% if 'X11Forwarding' in mu.value %} X11Forwarding {{ mu.value.X11Forwarding }}{% endif %}
-{% if 'AllowTcpForwarding' in mu.value %} AllowTcpForwarding {{ mu.value.AllowTcpForwarding }}{% endif %}
-{% if 'PermitTTY' in mu.value %} PermitTTY {{ mu.value.PermitTTY }}{% endif %}
-{% if 'ForceCommand' in mu.value %} ForceCommand {{ mu.value.ForceCommand }}{% endif %}
+{% for k, v in sshd_config.MatchUsers.items() %}
+Match User {{ k }}
+{% if 'X11Forwarding' in v %} X11Forwarding {{ v.X11Forwarding }}{% endif %}
+{% if 'AllowTcpForwarding' in v %} AllowTcpForwarding {{ v.AllowTcpForwarding }}{% endif %}
+{% if 'PermitTTY' in v %} PermitTTY {{ v.PermitTTY }}{% endif %}
+{% if 'ForceCommand' in v %} ForceCommand {{ v.ForceCommand }}{% endif %}
 {% endfor %}
 {% endif %}
