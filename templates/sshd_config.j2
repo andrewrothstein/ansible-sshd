@@ -100,7 +100,7 @@ HostKey {{ hk }}
 
 {% if 'Subsystem' in sshd_config %}Subsystem {{ sshd_config.Subsystem }}{% endif %}
 {% if 'Subsystems' in sshd_config %}
-{% for ss in sshd_config.Sybsystems %}
+{% for ss in sshd_config.Subsystems %}
 Subsystem {{ ss }}
 {% endfor %}
 {% endif %}
