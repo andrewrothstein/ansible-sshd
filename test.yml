@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars:
-    # the works
+    sshd_service_managed: False
     sshd_config:
       Port: 22
       AddressFamily: any
@@ -76,7 +76,8 @@
 - hosts: all
   # simple configuration
   vars:
-    ssh_config:
+    sshd_service_managed: False
+    sshd_config:
       Port: 22
       ListenAddresses:
         - '0.0.0.0'
