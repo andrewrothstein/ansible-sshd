@@ -3,6 +3,7 @@
 - name: sshd_restart
   become: yes
   become_user: root
+  when: sshd_service_managed
   service:
     name: '{{ sshd_service_id }}'
     state: restarted

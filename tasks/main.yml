@@ -10,7 +10,7 @@
       paths:
         - '{{ role_path }}/vars'
 
-- name: install packages
+- name: install sshd package(s)
   become: '{{ sshd_privilege_escalation | default(True) }}'
   become_user: root
   with_items: '{{ sshd_packages }}'
@@ -18,7 +18,7 @@
     name: '{{ item }}'
     state: present
 
-- name: configure sshd
+- name: templatize sshd_config
   when: sshd_config is defined and sshd_privilege_escalation | bool
   become: yes
   become_user: root
@@ -32,7 +32,7 @@
     dest: '{{ item.d }}/{{ item.f }}'
     mode: '{{ item.m }}'
 
-- name: start sshd
+- name: start/enable sshd
   when: sshd_service_managed
   service:
     name: '{{ sshd_service_id }}'
