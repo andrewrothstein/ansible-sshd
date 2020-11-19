@@ -32,12 +32,6 @@
       PasswordAuthentication: yes
       PermitEmptyPasswords: no
       ChallengeResponseAuthentication: yes
-      KerberosAuthentication: no
-      KerberosOrLocalPasswd: yes
-      KerberosTicketCleanup: yes
-      KerberosGetAFSToken: no
-      GSSAPIAuthentication: no
-      GSSAPICleanupCredentials: yes
       UsePAM: yes
       AllowAgentForwarding: yes
       AllowTcpForwarding: yes
@@ -47,7 +41,6 @@
       X11UseLocalhost: yes
       PermitTTY: yes
       PrintMotd: yes
-      PrintLastLog: yes
       TCPKeepAlive: yes
       PermitUserEnvironment: no
       Compression: delayed
@@ -61,10 +54,9 @@
       VersionAddendum: none
       AcceptEnv: LANG LC_*
       Banner: none
-      Subsystem: 'sftp	/usr/libexec/sftp-server'
+      Subsystem: 'sftp /usr/libexec/sftp-server'
       Subsystems:
-        - 'sftp /usr/libexec/sftp-server'
-        - 'scp /ffo/bar/scp'
+        - 'scp /foo/bar/scp'
       MatchUsers:
         anoncvs:
           X11Forwarding: no
@@ -73,6 +65,9 @@
           ForceCommand: cvs server
   roles:
     - role: '{{ playbook_dir }}'
+#  tasks:
+#    - name: test sshd_config
+#      command: sshd -T
 - hosts: all
   # simple configuration
   vars:
@@ -86,3 +81,6 @@
       PermitRootLogin: no
   roles:
     - role: '{{ playbook_dir }}'
+#  tasks:
+#    - name: test sshd_config
+#      command: sshd -T
