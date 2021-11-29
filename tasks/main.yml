@@ -13,14 +13,13 @@
 - name: install sshd package(s)
   become: '{{ sshd_privilege_escalation | default(True) }}'
   become_user: root
-  with_items: '{{ sshd_packages }}'
   package:
-    name: '{{ item }}'
+    name: '{{ sshd_packages }}'
     state: present
 
 - name: templatize sshd_config
   when: sshd_config is defined and sshd_privilege_escalation | bool
-  become: yes
+  become: true
   become_user: root
   with_items:
   - f: sshd_config

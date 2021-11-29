@@ -1,7 +1,7 @@
 ---
 # handlers file for sshd
 - name: sshd_restart
-  become: yes
+  become: true
   become_user: root
   when: sshd_service_managed
   service:

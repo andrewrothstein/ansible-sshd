@@ -1,6 +1,6 @@
 andrewrothstein.sshd
 =========
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-sshd.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-sshd)
+![Build Status](https://github.com/andrewrothstein/ansible-sshd/actions/workflows/build.yml/badge.svg)
 
 Installs the SSH server
 

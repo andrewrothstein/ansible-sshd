@@ -1,4 +1,4 @@
 ---
 # launchctl
 sshd_service_id: com.openssh.sshd
-sshd_privilege_escalation: False
+sshd_privilege_escalation: false
