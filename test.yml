@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars:
-    sshd_service_managed: False
+    sshd_service_managed: false
     sshd_config:
       Port: 22
       AddressFamily: any
@@ -18,38 +18,38 @@
       LogLevel: INFO
       LoginGraceTime: 2m
       PermitRootLogin: prohibit-password
-      StrictModes: yes
+      StrictModes: 'yes'
       MaxAuthTries: 6
       MaxSessions: 10
-      PubkeyAuthentication: yes
+      PubkeyAuthentication: 'yes'
       AuthorizedKeysFile: .ssh/authorized_keys
       AuthorizedPrincipalsFile: none
       AuthorizedKeysCommand: none
       AuthorizedKeysCommandUser: nobody
-      HostbasedAuthentication: no
-      IgnoreUserKnownHosts: no
-      IgnoreRhosts: yes
-      PasswordAuthentication: yes
-      PermitEmptyPasswords: no
-      ChallengeResponseAuthentication: yes
-      UsePAM: yes
-      AllowAgentForwarding: yes
-      AllowTcpForwarding: yes
-      GatewayPorts: no
-      X11Forwarding: no
+      HostbasedAuthentication: 'no'
+      IgnoreUserKnownHosts: 'no'
+      IgnoreRhosts: 'yes'
+      PasswordAuthentication: 'yes'
+      PermitEmptyPasswords: 'no'
+      ChallengeResponseAuthentication: 'yes'
+      UsePAM: 'yes'
+      AllowAgentForwarding: 'yes'
+      AllowTcpForwarding: 'yes'
+      GatewayPorts: 'no'
+      X11Forwarding: 'no'
       X11DisplayOffset: 10
-      X11UseLocalhost: yes
-      PermitTTY: yes
-      PrintMotd: yes
-      TCPKeepAlive: yes
-      PermitUserEnvironment: no
+      X11UseLocalhost: 'yes'
+      PermitTTY: 'yes'
+      PrintMotd: 'yes'
+      TCPKeepAlive: 'yes'
+      PermitUserEnvironment: 'no'
       Compression: delayed
       ClientAliveInterval: 0
       ClientAliveCountMax: 3
-      UseDNS: no
+      UseDNS: 'no'
       PidFile: /var/run/sshd.pid
       MaxStartups: 10:30:100
-      PermitTunnel: no
+      PermitTunnel: 'no'
       ChrootDirectory: none
       VersionAddendum: none
       AcceptEnv: LANG LC_*
@@ -59,9 +59,9 @@
         - 'scp /foo/bar/scp'
       MatchUsers:
         anoncvs:
-          X11Forwarding: no
-          AllowTcpForwarding: no
-          PermitTTY: no
+          X11Forwarding: 'no'
+          AllowTcpForwarding: 'no'
+          PermitTTY: 'no'
           ForceCommand: cvs server
   roles:
     - role: '{{ playbook_dir }}'
@@ -71,14 +71,14 @@
 - hosts: all
   # simple configuration
   vars:
-    sshd_service_managed: False
+    sshd_service_managed: false
     sshd_config:
       Port: 22
       ListenAddresses:
         - '0.0.0.0'
         - '::'
-      PubkeyAuthentication: yes
-      PermitRootLogin: no
+      PubkeyAuthentication: 'yes'
+      PermitRootLogin: 'no'
   roles:
     - role: '{{ playbook_dir }}'
 #  tasks:
