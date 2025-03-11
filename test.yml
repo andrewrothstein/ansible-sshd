@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name: Testing andrewrothstein.sshd
+  hosts: all
   vars:
     sshd_service_managed: false
     sshd_config:

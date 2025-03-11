@@ -10,74 +10,74 @@ sshd_privilege_escalation: true
 # writing the sshd config requires privilege escalation despite your sshd_privilege_escalation setting
 sshd_config:
   ## Network Listeners
-  #Port: 22
+# Port: 22
 
-  #AddressFamily: any
-  #ListenAddress: '0.0.0.0'
+# AddressFamily: any
+# ListenAddress: '0.0.0.0'
   ## and/or
-  #ListenAddresses:
-  #  - '0.0.0.0'
-  #  - '::'
+# ListenAddresses:
+#   - '0.0.0.0'
+#   - '::'
 
   ## Host Keys
-  #HostKey: /etc/ssh/ssh_host_rsa_key
+# HostKey: /etc/ssh/ssh_host_rsa_key
   ## and/or
-  #HostKeys:
-  #  - /etc/ssh/ssh_host_ecdsa_key
-  #  - /etc/ssh/ssh_host_ed25519_key
+# HostKeys:
+#   - /etc/ssh/ssh_host_ecdsa_key
+#   - /etc/ssh/ssh_host_ed25519_key
 
   ## Ciphers and keying
 
-  #RekeyLimit: default none
+# RekeyLimit: default none
 
   ## Logging
 
-  #SyslogFacility: AUTH
-  #LogLevel: INFO
+# SyslogFacility: AUTH
+# LogLevel: INFO
 
   ## Authentication:
 
-  #LoginGraceTime: 2m
-  #PermitRootLogin: prohibit-password
-  #StrictModes: 'yes'
-  #MaxAuthTries: 6
-  #MaxSessions: 10
+# LoginGraceTime: 2m
+# PermitRootLogin: prohibit-password
+# StrictModes: 'yes'
+# MaxAuthTries: 6
+# MaxSessions: 10
 
-  #PubkeyAuthentication: 'yes'
+# PubkeyAuthentication: 'yes'
 
   ## The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
   ## but this is overridden so installations will only check .ssh/authorized_keys
-  #AuthorizedKeysFile: .ssh/authorized_keys
+# AuthorizedKeysFile: .ssh/authorized_keys
 
-  #AuthorizedPrincipalsFile: none
+# AuthorizedPrincipalsFile: none
 
-  #AuthorizedKeysCommand: none
-  #AuthorizedKeysCommandUser: nobody
+# AuthorizedKeysCommand: none
+# AuthorizedKeysCommandUser: nobody
 
   ## For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
-  #HostbasedAuthentication: 'no'
+# HostbasedAuthentication: 'no'
   ## Change to 'yes' if you don't trust ~/.ssh/known_hosts for
   ## HostbasedAuthentication
-  #IgnoreUserKnownHosts: 'no'
+# IgnoreUserKnownHosts: 'no'
   ## Don't read the user's ~/.rhosts and ~/.shosts files
-  #IgnoreRhosts: 'yes'
+# IgnoreRhosts: 'yes'
 
   ## To disable tunneled clear text passwords, change to no here!
-  #PasswordAuthentication: 'yes'
-  #PermitEmptyPasswords: 'no'
+# PasswordAuthentication: 'yes'
+# PermitEmptyPasswords: 'no'
 
   ## Change to no to disable s/key passwords
-  #ChallengeResponseAuthentication: 'yes'
+# ChallengeResponseAuthentication: 'yes'
 
   ## Kerberos options
-  #KerberosAuthentication: 'no'
-  #KerberosOrLocalPasswd: 'yes'
-  #KerberosTicketCleanup: 'yes'
-  #KerberosGetAFSToken: 'no'
+# KerberosAuthentication: 'no'
+# KerberosOrLocalPasswd: 'yes'
+# KerberosTicketCleanup: 'yes'
+# KerberosGetAFSToken: 'no'
 
   ## GSSAPI options
-  #GSSAPIAuthentication: 'no'
-  #GSSAPICleanupCredentials: 'yes'
+# GSSAPIAuthentication: 'no'
+# GSSAPICleanupCredentials: 'yes'
 
   ## Set this to 'yes' to enable PAM authentication, account processing,
   ## and session processing. If this is enabled, PAM authentication will
@@ -88,48 +88,48 @@ sshd_config:
   ## If you just want the PAM account and session checks to run without
   ## PAM authentication, then enable this but set PasswordAuthentication
   ## and ChallengeResponseAuthentication to 'no'.
-  #UsePAM: 'yes'
+# UsePAM: 'yes'
 
-  #AllowAgentForwarding: 'yes'
-  #AllowTcpForwarding: 'yes'
-  #GatewayPorts: 'no'
-  #X11Forwarding: 'no'
-  #X11DisplayOffset: 10
-  #X11UseLocalhost: 'yes'
-  #PermitTTY: 'yes'
-  #PrintMotd: 'yes'
-  #PrintLastLog: 'yes'
-  #TCPKeepAlive: 'yes'
-  #PermitUserEnvironment: no
-  #Compression: delayed
-  #ClientAliveInterval: 0
-  #ClientAliveCountMax: 3
-  #UseDNS: no
-  #PidFile: /var/run/sshd.pid
-  #MaxStartups: 10:30:100
-  #PermitTunnel: no
-  #ChrootDirectory: none
-  #VersionAddendum: none
+# AllowAgentForwarding: 'yes'
+# AllowTcpForwarding: 'yes'
+# GatewayPorts: 'no'
+# X11Forwarding: 'no'
+# X11DisplayOffset: 10
+# X11UseLocalhost: 'yes'
+# PermitTTY: 'yes'
+# PrintMotd: 'yes'
+# PrintLastLog: 'yes'
+# TCPKeepAlive: 'yes'
+# PermitUserEnvironment: no
+# Compression: delayed
+# ClientAliveInterval: 0
+# ClientAliveCountMax: 3
+# UseDNS: no
+# PidFile: /var/run/sshd.pid
+# MaxStartups: 10:30:100
+# PermitTunnel: no
+# ChrootDirectory: none
+# VersionAddendum: none
 
   ## pass locale information
-  #AcceptEnv: 'LANG LC_*'
+# AcceptEnv: 'LANG LC_*'
 
   ## no default banner path
-  #Banner: none
+# Banner: none
 
   ## override default of no subsystems
-  #Subsystem:	'sftp	/usr/libexec/sftp-server'
+# Subsystem:	'sftp	/usr/libexec/sftp-server'
   ## and/or
-  #Subsystems:
-  #  - 'sftp /usr/libexec/sftp-server'
-  #  - 'scp /ffo/bar/scp'
+# Subsystems:
+#   - 'sftp /usr/libexec/sftp-server'
+#   - 'scp /ffo/bar/scp'
 
   ## Example of overriding settings on a per-user basis
   ## Dictionary with usernames as keys an a Dictionary of per settings
   ## WARNING only the fields listed below are available per user. Sorry I suck at Jinja2.
-  #MatchUsers:
-  #  anoncvs:
-  #    X11Forwarding: no
-  #    AllowTcpForwarding: no
-  #    PermitTTY: no
-  #    ForceCommand: cvs server
+# MatchUsers:
+#   anoncvs:
+#     X11Forwarding: no
+#     AllowTcpForwarding: no
+#     PermitTTY: no
+#     ForceCommand: cvs server

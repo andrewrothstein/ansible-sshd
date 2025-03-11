@@ -1,9 +1,9 @@
 ---
 # handlers file for sshd
-- name: sshd_restart
+- name: Sshd_restart
   become: true
   become_user: root
-  when: sshd_service_managed
-  service:
+  when: sshd_service_managed | bool
+  ansible.builtin.service:
     name: '{{ sshd_service_id }}'
     state: restarted

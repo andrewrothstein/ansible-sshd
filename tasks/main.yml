@@ -1,6 +1,6 @@
 ---
-- name: resolve platform specific vars
-  include_vars: '{{ item }}'
+- name: Resolve platform specific vars
+  ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - files:
         - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
@@ -10,30 +10,34 @@
       paths:
         - '{{ role_path }}/vars'
 
-- name: install sshd package(s)
+- name: Install sshd package(s)
   become: '{{ sshd_privilege_escalation | default(True) }}'
   become_user: root
-  package:
+  ansible.builtin.package:
     name: '{{ sshd_packages }}'
     state: present
 
-- name: templatize sshd_config
+- name: Templatize sshd_config
   when: sshd_config is defined and sshd_privilege_escalation | bool
   become: true
   become_user: root
   with_items:
-  - f: sshd_config
-    d: /etc/ssh
-    m: 0644
-  notify: sshd_restart
-  template:
+    - f: sshd_config
+      d: /etc/ssh
+      m: '644'
+  notify: Sshd_restart
+  ansible.builtin.template:
     src: '{{ item.f }}.j2'
     dest: '{{ item.d }}/{{ item.f }}'
     mode: '{{ item.m }}'
 
-- name: start/enable sshd
-  when: sshd_service_managed
-  service:
+- name: >-
+    Sshd service
+    name: {{ sshd_service_id }},
+    state: {{ sshd_service_state }},
+    enabled: {{ sshd_service_enabled }}
+  when: sshd_service_managed | bool
+  ansible.builtin.service:
     name: '{{ sshd_service_id }}'
     state: '{{ sshd_service_state }}'
     enabled: '{{ sshd_service_enabled }}'

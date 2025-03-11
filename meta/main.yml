@@ -1,13 +1,19 @@
 ---
 galaxy_info:
   author: Andrew Rothstein
-  description: Role that installs an SSH server
   company: BlackRock
-  license:
-    - MIT
-  min_ansible_version: 2.0
+  description: Role that installs an SSH server
+  galaxy_tags:
+    - ssh
+    - sshd
+  license: MIT
+  min_ansible_version: '2.0'
+  namespace: andrewrothstein
   platforms:
     - name: Alpine
+      versions:
+        - all
+    - name: ArchLinux
       versions:
         - all
     - name: Debian
@@ -16,19 +22,14 @@ galaxy_info:
         - bullseye
     - name: EL
       versions:
-        - 8
-        - 9
+        - '8'
+        - '9'
     - name: Fedora
       versions:
-        - 36
-        - 37
-    - name: MacOSX
-      versions:
-        - all
+        - '40'
+        - '41'
     - name: Ubuntu
       versions:
-        - focal
         - jammy
-  galaxy_tags:
-    - ssh
-    - sshd
+        - noble
+  role_name: sshd
