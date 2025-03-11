@@ -1,5 +1,5 @@
 ---
-- name: Testing andrewrothstein.sshd
+- name: Testing andrewrothstein.sshd (1)
   hosts: all
   vars:
     sshd_service_managed: false
@@ -69,7 +69,8 @@
 #  tasks:
 #    - name: test sshd_config
 #      command: sshd -T
-- hosts: all
+- name: Testing andrewrothstein.sshd (2)
+  hosts: all
   # simple configuration
   vars:
     sshd_service_managed: false
